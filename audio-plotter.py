@@ -25,27 +25,33 @@ for i, value in enumerate(sound_signal):
 time_dom = np.linspace(0, data_size / float(sample_rate), num=float(data_size))  # Linear Space [0-10] num = 44100 * 10
 
 plot.figure(1, figsize=(8, 8), dpi=80)
+plot.subplots_adjust(hspace = 0.5)
 plot.subplot(211)
+plot.title('SINAL NO DOMÍNIO DO TEMPO\n\nCanal 1\n')
 plot.plot(time_dom, channel[0], linewidth=1, alpha=0.8, color='blue')
-plot.xlabel('Tempo (s)')
-plot.ylabel('Amplitude')
+plot.xlabel('\nTempo (s)')
+# plot.ylabel('Amplitude')
 plot.subplot(212)
+plot.title('Canal 2\n')
 plot.plot(time_dom, channel[1], linewidth=1, alpha=0.8, color='orange')
-plot.xlabel('Tempo (s)')
-plot.ylabel('Amplitude')
+plot.xlabel('\nTempo (s)')
+# plot.ylabel('Amplitude')
 
 # Fourier Transformation Graph
 
 fourier = fft.fft(channel)
 
 plot.figure(2, figsize=(8, 8), dpi=80)
+plot.subplots_adjust(hspace = 0.5)
 plot.subplot(211)
+plot.title('SINAL NO DOMÍNIO DA FREQUÊNCIA\n\nCanal 1\n')
 plot.plot(abs(fourier[0]), linewidth=1, alpha=0.8, color='blue')
-plot.xlabel('Frequência (Hz)')
-plot.ylabel('Amplitude')
+plot.xlabel('\nFrequência (Hz)')
+# plot.ylabel('Amplitude')
 plot.subplot(212)
+plot.title('Canal 2\n')
 plot.plot(abs(fourier[1]), linewidth=1, alpha=0.8, color='orange')
-plot.xlabel('Frequência (Hz)')
-plot.ylabel('Amplitude')
+plot.xlabel('\nFrequência (Hz)')
+# plot.ylabel('Amplitude')
 
 plot.show()
