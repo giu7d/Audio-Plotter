@@ -1,14 +1,18 @@
+#!/usr/bin/env python
+
 import matplotlib.pyplot as plot
 import numpy as np
 from numpy import fft
 import wave
 import sys
 
+
 try:
     wav_file = wave.open(sys.argv[1], 'r')
     # wav_file = wave.open('the_less_i_know_the_better.wav', 'r')
 except FileNotFoundError:
     print(FileNotFoundError)
+
 
 data_size = wav_file.getnframes()                   # (Hz * s)
 sample_rate = wav_file.getframerate()               # Freq. (Hz)
@@ -19,6 +23,7 @@ channel = [[] for channel in range(wav_file.getnchannels())]
 
 for i, value in enumerate(sound_signal):
     channel[i % len(channel)].append(value)
+
 
 # Time Domain Graph
 
